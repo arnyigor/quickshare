@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="@dimen/screen_padding">
 
     <!-- Поле ввода -->
     <com.google.android.material.textfield.TextInputLayout
@@ -11,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:hint="@string/text"
-        app:layout_constraintBottom_toTopOf="@+id/copyButton"
+        app:layout_constraintBottom_toTopOf="@+id/actionsChipGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,74 +26,87 @@
             android:inputType="textMultiLine" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Кнопки буфера обмена -->
-    <ImageButton
-        android:id="@+id/copyButton"
-        android:layout_width="52dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="8dp"
-        android:contentDescription="@string/copy_text"
-        android:src="@drawable/ic_content_copy_24"
-        app:layout_constraintEnd_toStartOf="@+id/pasteButton"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textInputLayout" />
-
-    <!-- Основные кнопки -->
-    <ImageButton
-        android:id="@+id/pasteButton"
-        android:layout_width="52dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="8dp"
-        android:contentDescription="@string/past_text"
-        android:src="@drawable/ic_content_paste_24"
-        app:layout_constraintEnd_toStartOf="@+id/clearButton"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toEndOf="@+id/copyButton"
-        app:layout_constraintTop_toBottomOf="@id/textInputLayout" />
-
-    <ImageButton
-        android:id="@+id/clearButton"
-        android:layout_width="52dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="8dp"
-        android:contentDescription="@string/past_text"
-        android:src="@drawable/ic_clear_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toEndOf="@+id/pasteButton"
-        app:layout_constraintTop_toBottomOf="@id/textInputLayout" />
-
-    <Button
-        android:id="@+id/extractCodeButton"
+    <!-- Группа кнопок действий с текстом -->
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/actionsChipGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="8dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/extract_code"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/shareButton"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="spread"
+        android:layout_marginTop="@dimen/vertical_spacing"
+        app:chipSpacingHorizontal="@dimen/chip_spacing"
+        app:layout_constraintBottom_toTopOf="@+id/extractCodeButton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/copyButton" />
+        app:layout_constraintTop_toBottomOf="@id/textInputLayout"
+        app:singleLine="true">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/copyButton"
+            style="@style/Widget.MaterialComponents.Chip.Action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/copy_text"
+            app:chipMinHeight="32dp"
+            app:chipMinTouchTargetSize="0dp"
+            app:chipIcon="@drawable/ic_content_copy_24"
+            app:chipIconSize="18dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/pasteButton"
+            style="@style/Widget.MaterialComponents.Chip.Action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/past_text"
+            app:chipMinHeight="32dp"
+            app:chipMinTouchTargetSize="0dp"
+            app:chipIcon="@drawable/ic_content_paste_24"
+            app:chipIconSize="18dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/clearButton"
+            style="@style/Widget.MaterialComponents.Chip.Action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/clear"
+            app:chipMinHeight="32dp"
+            app:chipMinTouchTargetSize="0dp"
+            app:chipIcon="@drawable/ic_clear_24"
+            app:chipIconSize="18dp" />
+    </com.google.android.material.chip.ChipGroup>
+
+    <!-- Кнопки основных действий -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/extractCodeButton"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/vertical_spacing"
+        android:minWidth="0dp"
+        android:minHeight="48dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:text="@string/extract_code"
+        app:icon="@drawable/ic_code_24"
+        app:iconPadding="8dp"
+        app:iconSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/actionsChipGroup" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/shareButton"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="0dp"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="8dp"
-        android:layout_marginTop="16dp"
-        android:enabled="false"
+        android:minWidth="0dp"
+        android:minHeight="48dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
         android:text="@string/share_by_file"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:icon="@drawable/ic_share_24"
+        app:iconPadding="8dp"
+        app:iconSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/extractCodeButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/extractCodeButton"
-        app:layout_constraintTop_toBottomOf="@id/copyButton" />
+        app:layout_constraintTop_toTopOf="@id/extractCodeButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

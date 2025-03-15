@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Основные отступы -->
+    <dimen name="screen_padding">16dp</dimen>
+    <dimen name="vertical_spacing">8dp</dimen>
+    <dimen name="chip_spacing">4dp</dimen>
+</resources> 

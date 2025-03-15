@@ -31,3 +31,17 @@ google-services.json
 
 # Android Profiling
 *.hprof
+
+# Release signing
+/secret.properties
+/app/release/
+/keystore/
+
+# Additional files to ignore
+.idea/caches
+.idea/libraries
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+.DS_Store

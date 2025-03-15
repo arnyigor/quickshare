@@ -1,20 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">QuickShare</string>
-    <string name="get_text">Вставить текст из буфера</string>
-    <string name="share">Отправить</string>
-    <string name="clear_text">Очистить</string>
-    <string name="copy">Копировать в буфер</string>
     <string name="copy_text">Копировать</string>
     <string name="past_text">Вставить</string>
-    <string name="share_by_file">Отправить файлом</string>
+    <string name="share_by_file">Файл</string>
     <string name="text">Текст</string>
     <string name="file_info">Инфомация о файле</string>
-    <string name="extract_code">Извлечь код</string>
-    <string name="code_not_found">Код не найден</string>
+    <string name="extract_code">Код</string>
     <string name="found_code_fragments">Найденные фрагменты кода</string>
     <string name="code_fragment">Фрагмент %d</string>
     <string name="use_this_code">Использовать этот код</string>
     <string name="preview_code">Предпросмотр кода</string>
-    <string name="text_inserted_from_buffer">Текст вставлен из буфера обмена</string>
     <string name="error">Ошибка</string>
+    <string name="copied">Скопировано</string>
+    <string name="pasted">Вставлено</string>
+    <string name="cleared">Очищено</string>
+    <string name="error_clipboard">Ошибка буфера обмена</string>
+    <string name="clear">Очистить</string>
+    <string name="no_code_blocks">Блоки кода не найдены</string>
+    <string name="nothing_to_copy">Нечего копировать</string>
+    <string name="nothing_to_share">Нечего отправлять</string>
+    <string name="clipboard_not_available">Буфер обмена недоступен</string>
+    <string name="clipboard_empty">Буфер обмена пуст</string>
 </resources>

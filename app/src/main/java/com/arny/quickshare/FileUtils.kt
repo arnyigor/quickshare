@@ -12,17 +12,21 @@ object FileUtils {
             context.contentResolver.getType(uri)
         } else {
             val fileExtension = MimeTypeMap.getFileExtensionFromUrl(uri.toString())
-            MimeTypeMap.getSingleton().getMimeTypeFromExtension(fileExtension.lowercase(Locale.getDefault()))
+            MimeTypeMap.getSingleton().getMimeTypeFromExtension(fileExtension?.lowercase(Locale.getDefault()))
         }
     }
 
     fun isTextFile(mimeType: String?): Boolean {
-        return mimeType?.startsWith("text/") == true ||
-                mimeType in arrayOf(
+        if (mimeType == null) return false
+        
+        val textMimeTypes = setOf(
             "application/x-markdown",
             "text/markdown",
             "text/x-markdown",
             "text/plain"
         )
+        
+        return mimeType.startsWith("text/", ignoreCase = true) || 
+               textMimeTypes.contains(mimeType.lowercase(Locale.getDefault()))
     }
 }
